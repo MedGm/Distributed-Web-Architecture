@@ -1,0 +1,124 @@
+<div class="details-layout">
+  <header class="details-header">
+    <div class="header-content">
+      <div>
+        <a routerLink="/employees" class="back-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          Retour à la liste
+        </a>
+        <h1>Détails de l'employé</h1>
+        <p class="page-subtitle">Informations complètes de l'employé</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="details-main">
+    <div class="details-container">
+      <div *ngIf="loading" class="loading-container">
+        <div class="spinner"></div>
+        <p>Chargement des données...</p>
+      </div>
+
+      <div *ngIf="error" class="alert alert-error">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        {{ error }}
+      </div>
+
+      <div *ngIf="!loading && employee" class="details-card">
+        <div class="card-header">
+          <div class="employee-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div>
+            <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
+            <p class="employee-id">ID: #{{ employee.id }}</p>
+          </div>
+        </div>
+
+        <div class="details-content">
+          <div class="detail-section">
+            <h3>Informations personnelles</h3>
+            <div class="detail-grid">
+              <div class="detail-item">
+                <div class="detail-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  Prénom
+                </div>
+                <div class="detail-value">{{ employee.firstName }}</div>
+              </div>
+
+              <div class="detail-item">
+                <div class="detail-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="8.5" cy="7" r="4"></circle>
+                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                  </svg>
+                  Nom
+                </div>
+                <div class="detail-value">{{ employee.lastName }}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h3>Contact</h3>
+            <div class="detail-item">
+              <div class="detail-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Email
+              </div>
+              <div class="detail-value">
+                <a [href]="'mailto:' + employee.email" class="email-link">{{ employee.email }}</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h3>Rémunération</h3>
+            <div class="detail-item salary-item">
+              <div class="detail-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                Salaire
+              </div>
+              <div class="detail-value salary-value">
+                {{ employee.salary | number:'1.2-2' }} <span class="currency">MAD</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <a [routerLink]="['/employees/edit', employee.id]" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+            Modifier
+          </a>
+          <button (click)="goBack()" class="btn btn-secondary">
+            Retour à la liste
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

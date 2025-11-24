@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.angular/
+.idea/
+.vscode/
+*.iml
+.git/
+.gitignore
+README.md
+RAPPORT_FRONTEND.md
+*.log
+npm-debug.log*
+

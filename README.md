@@ -29,6 +29,7 @@ Chaque atelier est un projet indépendant qui illustre un aspect de ces technolo
 | **Atelier 5 – REST API** | [`atelier5_restapi`](atelier5_restapi/) | API REST avec Spring Boot et JPA pour la gestion des produits. |
 | **Atelier 5 – Frontend** | [`atelier5-frontend`](atelier5-frontend/) | Frontend Angular pour l'API REST de l'atelier 5. |
 | **Atelier 6 – Spring MVC** | [`atelier6_springmvc`](atelier6_springmvc/) | Application web avec Spring MVC. |
+| **Atelier 7 – Full-Stack + Docker** | [`docker-compose.yml`](docker-compose.yml), [`atelier7_springrest`](atelier7_springrest/), [`atelier7-frontend`](atelier7-frontend/) | Application full-stack de gestion des employés avec Spring Boot (API REST sécurisée JWT), Angular, MySQL, et conteneurisation Docker complète. |
 
 > Chaque dossier contient son propre README.md détaillant le fonctionnement du projet.
 
@@ -36,11 +37,12 @@ Chaque atelier est un projet indépendant qui illustre un aspect de ces technolo
 
 ## Technologies communes
 
-- **Langage :** Java 17+  
-- **Frameworks :** Jakarta EE (Servlet, JSP, JSTL, CDI, EJB, JPA), Spring Framework (Spring MVC, Spring Boot)
+- **Langage :** Java 17+, TypeScript  
+- **Frameworks :** Jakarta EE (Servlet, JSP, JSTL, CDI, EJB, JPA), Spring Framework (Spring MVC, Spring Boot), Angular
 - **Serveurs d'application :** WildFly, Tomcat (architecture distribuée)  
 - **Base de données :** MySQL  
-- **Gestion de projet :** Maven  
+- **Gestion de projet :** Maven, npm  
+- **Conteneurisation :** Docker, Docker Compose
 - **IDE :** IntelliJ IDEA Ultimate  
 
 ---
@@ -53,10 +55,28 @@ Chaque atelier est un projet indépendant qui illustre un aspect de ces technolo
    cd JEE
    ```
 
-2. Naviguer dans l’atelier souhaité :
+2. Naviguer dans l'atelier souhaité :
    ```bash
    cd atelier1_mvc2
    ```
+
+### Atelier 7 - Démarrage avec Docker
+
+L'Atelier 7 peut être démarré facilement avec Docker Compose :
+
+```bash
+cd JEE
+docker-compose up --build
+```
+
+L'application sera accessible sur :
+- **Frontend Angular** : http://localhost:8082
+- **Backend API** : http://localhost:8081
+- **MySQL** : localhost:3307
+
+Compte admin par défaut : `admin` / `admin123`
+
+Pour plus de détails, consultez les README.md dans [`atelier7_springrest`](atelier7_springrest/) et [`atelier7-frontend`](atelier7-frontend/).
 
    
 Réalisé par El Gorrim Mohamed

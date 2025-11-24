@@ -1,0 +1,131 @@
+<div class="form-layout">
+  <header class="form-header">
+    <div class="header-content">
+      <div>
+        <a routerLink="/employees" class="back-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          Retour
+        </a>
+        <h1>Modifier un employé</h1>
+        <p class="page-subtitle">Mettez à jour les informations de l'employé</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="form-main">
+    <div class="form-container">
+      <div *ngIf="loading && !employee.id" class="loading-container">
+        <div class="spinner"></div>
+        <p>Chargement des données...</p>
+      </div>
+
+      <div *ngIf="error" class="alert alert-error">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        {{ error }}
+      </div>
+
+      <form *ngIf="!loading || employee.id" (ngSubmit)="onSubmit()" #employeeForm="ngForm" class="employee-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="firstName">
+              Prénom <span class="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              [(ngModel)]="employee.firstName"
+              required
+              class="form-control"
+              placeholder="Ex: Jean"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">
+              Nom <span class="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              [(ngModel)]="employee.lastName"
+              required
+              class="form-control"
+              placeholder="Ex: Dupont"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">
+            Email <span class="required">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="employee.email"
+            required
+            email
+            class="form-control"
+            placeholder="Ex: jean.dupont@example.com"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="salary">
+            Salaire <span class="required">*</span>
+            <span class="label-hint">(doit être supérieur à 0)</span>
+          </label>
+          <div class="input-with-icon">
+            <input
+              type="number"
+              id="salary"
+              name="salary"
+              [(ngModel)]="employee.salary"
+              required
+              min="0.01"
+              step="0.01"
+              class="form-control"
+              placeholder="0.00"
+            />
+            <span class="input-suffix">MAD</span>
+          </div>
+          <small class="form-text">
+            Le salaire doit être supérieur à 0 MAD
+          </small>
+        </div>
+
+        <div class="form-actions">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!employeeForm.valid || loading"
+          >
+            <svg *ngIf="!loading" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+              <polyline points="17 21 17 13 7 13 7 21"></polyline>
+              <polyline points="7 3 7 8 15 8"></polyline>
+            </svg>
+            <span *ngIf="loading" class="spinner-small"></span>
+            {{ loading ? 'Mise à jour en cours...' : 'Mettre à jour' }}
+          </button>
+          <button
+            type="button"
+            (click)="cancel()"
+            class="btn btn-secondary"
+          >
+            Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>

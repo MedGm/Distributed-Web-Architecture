@@ -1,9 +1,9 @@
 # Distributed Web Architecture Repository (JEE & Spring)
 
 <p align="center">
-  <img width="60" height="109" alt="image" src="https://github.com/user-attachments/assets/95f415be-76cf-46e5-b6e2-2ebfa8ed9f5e" />
+  <img width="100" height="140" alt="image" src="https://github.com/user-attachments/assets/95f415be-76cf-46e5-b6e2-2ebfa8ed9f5e" />
   <img width="250" height="190" alt="image" src="https://github.com/user-attachments/assets/b13e3e29-92c7-4db8-b362-d24ab0a8c57c" />
-  <img width="250" height="190" alt="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/2560px-Spring_Framework_Logo_2018.svg.png" />
+  <img width="220" height="160" alt="image" src="https://cdn.worldvectorlogo.com/logos/spring-3.svg" />
 </p>
 
 Bienvenue dans ce dépôt GitHub qui regroupe mes travaux pratiques et ateliers réalisés dans le cadre de l’apprentissage de **l'architecture web distribuée**, en utilisant **Jakarta EE / Java EE** et **Spring Framework**.  
